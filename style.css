@@ -7,10 +7,21 @@
   /* margin: auto; */
 }
 
+.quiz_box.active {
+  opacity: 1;
+  pointer-events: auto;
+
+  transform: translate(-50%, -50%) scale(1);
+}
+
 .quiz_box {
   width: 700px;
 
+  transform: translate(-50%, -50%) scale(0.7);
+  transition: all 0.3s ease;
+
   opacity: 0;
+  pointer-events: none;
 }
 
 .quiz_box header .title {
