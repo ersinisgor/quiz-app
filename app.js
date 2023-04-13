@@ -67,11 +67,31 @@ class Quiz {
 const quiz = new Quiz(questions);
 
 document.querySelector('.btn_start').addEventListener('click', function () {
-  if (quiz.questions.length != quiz.questionIndex) {
-    document.querySelector('.quiz_box').classList.add('active');
-    console.log(quiz.getQuestions());
+  document.querySelector('.quiz_box').classList.add('active');
+  showQuestion(quiz.getQuestions());
+});
+
+document.querySelector('.next_btn').addEventListener('click', function () {
+  if (quiz.questions.length != quiz.questionIndex + 1) {
     quiz.questionIndex += 1;
+    showQuestion(quiz.getQuestions());
   } else {
     console.log('quiz finished');
   }
 });
+
+function showQuestion(question) {
+  let questionTextElement = `<span>${question.questionText}</span>`;
+  let options = '';
+  for (let answer in question.answerOptions) {
+    options += `
+    
+            <div class="option">
+                <span><b>${answer}</b>: ${question.answerOptions[answer]}</span>
+            </div>
+            
+        `;
+  }
+  document.querySelector('.question_text').innerHTML = questionTextElement;
+  document.querySelector('.option_list').innerHTML = options;
+}
