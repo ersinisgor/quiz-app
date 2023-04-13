@@ -69,12 +69,14 @@ const quiz = new Quiz(questions);
 document.querySelector('.btn_start').addEventListener('click', function () {
   document.querySelector('.quiz_box').classList.add('active');
   showQuestion(quiz.getQuestions());
+  document.querySelector('.next_btn').classList.remove('show');
 });
 
 document.querySelector('.next_btn').addEventListener('click', function () {
   if (quiz.questions.length != quiz.questionIndex + 1) {
     quiz.questionIndex += 1;
     showQuestion(quiz.getQuestions());
+    document.querySelector('.next_btn').classList.remove('show');
   } else {
     console.log('quiz finished');
   }
@@ -122,4 +124,6 @@ function optionSelected(option) {
   for (let i = 0; i < option_list.children.length; i++) {
     option_list.children[i].classList.add('disabled');
   }
+
+  document.querySelector('.next_btn').classList.add('show');
 }
