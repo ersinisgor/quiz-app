@@ -6,9 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz App</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
-    <button class="btn-start">Start Quiz</button>
+    <div class="btn_start">
+      <button class="btn btn-warning btn-lg">Start Quiz</button>
+    </div>
+
+    <div class="card quiz_box">
+      <header class="card-header">
+        <div class="title">Quiz App</div>
+      </header>
+      <section class="card-body">
+        <div class="question_text">
+          <span>1- What is JavaScript?</span>
+        </div>
+        <div class="option_list">
+          <div class="option">
+            <span>
+              a: JavaScript is a scripting language used to make the website
+              interactive
+            </span>
+            <div class="icon"><i class="fas fa-check"></i></div>
+          </div>
+          <div class="option">
+            <span>
+              b: JavaScript is an assembly language used to make the website
+              interactive
+            </span>
+            <div class="icon"><i class="fas fa-times"></i></div>
+          </div>
+          <div class="option correct">
+            <span>
+              c: JavaScript is a compiled language used to make the website
+              interactive
+            </span>
+            <div class="icon"><i class="fas fa-times"></i></div>
+          </div>
+          <div class="option incorrect">
+            <span> d: None of the mentioned </span>
+            <div class="icon"><i class="fas fa-times"></i></div>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <script src="app.js"></script>
   </body>

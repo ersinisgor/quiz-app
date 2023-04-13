@@ -66,7 +66,7 @@ class Quiz {
 
 const quiz = new Quiz(questions);
 
-document.querySelector('.btn-start').addEventListener('click', function () {
+document.querySelector('.btn_start').addEventListener('click', function () {
   if (quiz.questions.length != quiz.questionIndex) {
     console.log(quiz.getQuestions());
     quiz.questionIndex += 1;
