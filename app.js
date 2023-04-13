@@ -80,6 +80,10 @@ document.querySelector('.next_btn').addEventListener('click', function () {
   }
 });
 
+const option_list = document.querySelector('.option_list');
+const correctIcon = '<div class="icon"><i class="fas fa-check"></i></div>';
+const incorrectIcon = '<div class="icon"><i class="fas fa-times"></i></div>';
+
 function showQuestion(question) {
   let questionTextElement = `<span>${question.questionText}</span>`;
   let options = '';
@@ -92,6 +96,30 @@ function showQuestion(question) {
             
         `;
   }
+
   document.querySelector('.question_text').innerHTML = questionTextElement;
-  document.querySelector('.option_list').innerHTML = options;
+  option_list.innerHTML = options;
+
+  const allOptions = option_list.querySelectorAll('.option');
+
+  for (let opt of allOptions) {
+    opt.setAttribute('onclick', 'optionSelected(this)');
+  }
+}
+
+function optionSelected(option) {
+  let answer = option.querySelector('span b').textContent;
+  let question = quiz.getQuestions();
+
+  if (question.checkTheAnswer(answer)) {
+    option.classList.add('correct');
+    option.insertAdjacentHTML('beforeend', correctIcon);
+  } else {
+    option.classList.add('incorrect');
+    option.insertAdjacentHTML('beforeend', incorrectIcon);
+  }
+
+  for (let i = 0; i < option_list.children.length; i++) {
+    option_list.children[i].classList.add('disabled');
+  }
 }
