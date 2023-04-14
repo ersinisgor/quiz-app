@@ -1,3 +1,5 @@
+'use strict';
+
 // Quiz class that holds all the questions
 class Quiz {
   constructor(questions) {

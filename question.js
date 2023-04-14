@@ -1,3 +1,5 @@
+'use strict';
+
 // Question class that represents a single question
 class Question {
   constructor(questionText, answerOptions, trueAnswer) {
@@ -52,5 +54,65 @@ let questions = [
       d: 'All of the mentioned',
     },
     'd'
+  ),
+  new Question(
+    '5- Which of the following object is the main entry point to all client-side JavaScript features and APIs?',
+    {
+      a: 'Position',
+      b: 'Window',
+      c: 'Standard',
+      d: 'Location',
+    },
+    'b'
+  ),
+  new Question(
+    '6- Which of the following scoping type does JavaScript use?',
+    {
+      a: 'Sequential',
+      b: 'Segmental',
+      c: 'Lexical',
+      d: 'Literal',
+    },
+    'c'
+  ),
+  new Question(
+    '7- Why JavaScript Engine is needed?',
+    {
+      a: 'Both Compiling & Interpreting the JavaScript',
+      b: 'Parsing the javascript',
+      c: 'Interpreting the JavaScript',
+      d: 'Compiling the JavaScript',
+    },
+    'c'
+  ),
+  new Question(
+    '8- Which of the following methods/operation does javascript use instead of == and !=?',
+    {
+      a: 'JavaScript uses equalto()',
+      b: 'JavaScript uses equals() and notequals() instead',
+      c: 'JavaScript uses bitwise checking',
+      d: 'JavaScript uses === and !== instead',
+    },
+    'd'
+  ),
+  new Question(
+    '9- Which of the following is not an error in JavaScript?',
+    {
+      a: 'Missing of Bracket',
+      b: 'Division by zero',
+      c: 'Syntax error',
+      d: 'Missing of semicolons',
+    },
+    'b'
+  ),
+  new Question(
+    '10- Which of the following is the property that is triggered in response to JS errors?',
+    {
+      a: 'onclick',
+      b: 'onerror',
+      c: 'onmessage',
+      d: 'onexception',
+    },
+    'b'
   ),
 ];

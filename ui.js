@@ -1,3 +1,5 @@
+'use strict';
+
 class UI {
   constructor() {
     this.btn_start = document.querySelector('.btn_start');
