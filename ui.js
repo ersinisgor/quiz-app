@@ -4,6 +4,8 @@ class UI {
   constructor() {
     this.btn_start = document.querySelector('.btn_start');
     this.btn_next = document.querySelector('.next_btn');
+    this.btn_replay = document.querySelector('.btn_replay');
+    this.btn_quit = document.querySelector('.btn_quit');
     this.quiz_box = document.querySelector('.quiz_box');
     this.score_box = document.querySelector('.score_box');
     this.option_list = document.querySelector('.option_list');
@@ -46,6 +48,7 @@ class UI {
     document.querySelector('.quiz_box .question_index').innerHTML = tag;
   }
 
+  // This function displays the number of correct answer and the total number of questions in the quiz
   showScore(totalNumberOfQuestions, numberOfCorrectAnswer) {
     let tag = `You gave ${numberOfCorrectAnswer} correct answers out of a total of ${totalNumberOfQuestions} questions`;
     document.querySelector('.score_box .score_text').innerHTML = tag;

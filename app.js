@@ -35,6 +35,20 @@ ui.btn_next.addEventListener('click', function () {
   }
 });
 
+ui.btn_quit.addEventListener('click', function () {
+  window.location.reload();
+});
+
+ui.btn_replay.addEventListener('click', function () {
+  quiz.questionIndex = 0;
+  quiz.numberOfcorrectAnswer = 0;
+
+  //click event with JavaScript
+  ui.btn_start.click();
+
+  ui.score_box.classList.remove('active');
+});
+
 // This function is called when an answer option is selected
 function optionSelected(option) {
   // Get the text content of the selected answer option
