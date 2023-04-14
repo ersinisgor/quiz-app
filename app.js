@@ -10,6 +10,7 @@ ui.btn_start.addEventListener('click', function () {
   ui.quiz_box.classList.add('active');
   // Start timer
   startTimer(10);
+  startTimerLine();
   // Show the first question
   ui.showQuestion(quiz.getQuestions());
   // Show the current question number and total number of questions
@@ -24,13 +25,18 @@ ui.btn_next.addEventListener('click', function () {
   if (quiz.questions.length != quiz.questionIndex + 1) {
     // Increment the question index and show the next question
     quiz.questionIndex += 1;
+    clearInterval(counter);
+    clearInterval(counterLine);
+    startTimer(10);
+    startTimerLine();
     ui.showQuestion(quiz.getQuestions());
     // Show the current question number and total number of questions
     ui.showNumberOfQuestions(quiz.questionIndex + 1, quiz.questions.length);
     // Hide the 'Next' button
     ui.btn_next.classList.remove('show');
   } else {
-    console.log('quiz finished');
+    clearInterval(counter);
+    clearInterval(counterLine);
     ui.quiz_box.classList.remove('active');
     ui.score_box.classList.add('active');
     ui.showScore(quiz.questions.length, quiz.numberOfcorrectAnswer);
@@ -53,6 +59,8 @@ ui.btn_replay.addEventListener('click', function () {
 
 // This function is called when an answer option is selected
 function optionSelected(option) {
+  clearInterval(counter);
+  clearInterval(counterLine);
   // Get the text content of the selected answer option
   let answer = option.querySelector('span b').textContent;
   // Get the current question from the quiz
@@ -89,6 +97,35 @@ function startTimer(time) {
       clearInterval(counter);
 
       ui.time_text.textContent = "Time's Up!";
+
+      let answer = quiz.getQuestions().correctAnswer;
+
+      for (let option of ui.option_list.children) {
+        if (option.querySelector('span b').textContent == answer) {
+          option.classList.add('correct');
+          option.insertAdjacentHTML('beforeend', ui.correctIcon);
+        }
+
+        option.classList.add('disabled');
+      }
+
+      ui.btn_next.classList.add('show');
+    }
+  }
+}
+
+let counterLine;
+function startTimerLine() {
+  let line_width = 0;
+
+  counterLine = setInterval(timer, 20);
+
+  function timer() {
+    line_width += 1.265;
+    ui.time_line.style.width = line_width + 'px';
+
+    if (line_width >= 700) {
+      clearInterval(counterLine);
     }
   }
 }

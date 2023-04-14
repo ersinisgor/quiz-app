@@ -13,6 +13,7 @@ class UI {
     this.incorrectIcon = '<div class="icon"><i class="fas fa-times"></i></div>';
     this.time_text = document.querySelector('.time_text');
     this.time_second = document.querySelector('.time_second');
+    this.time_line = document.querySelector('.time_line');
   }
 
   // This function shows a question on the quiz page
