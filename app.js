@@ -8,6 +8,8 @@ const ui = new UI();
 ui.btn_start.addEventListener('click', function () {
   // Add the 'active' class to the quiz box to show it
   ui.quiz_box.classList.add('active');
+  // Start timer
+  startTimer(10);
   // Show the first question
   ui.showQuestion(quiz.getQuestions());
   // Show the current question number and total number of questions
@@ -73,4 +75,20 @@ function optionSelected(option) {
   }
 
   ui.btn_next.classList.add('show');
+}
+
+let counter;
+function startTimer(time) {
+  counter = setInterval(timer, 1000);
+
+  function timer() {
+    ui.time_second.textContent = time;
+    time--;
+
+    if (time < 0) {
+      clearInterval(counter);
+
+      ui.time_text.textContent = "Time's Up!";
+    }
+  }
 }
