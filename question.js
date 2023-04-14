@@ -2,14 +2,14 @@
 
 // Question class that represents a single question
 class Question {
-  constructor(questionText, answerOptions, trueAnswer) {
+  constructor(questionText, answerOptions, correctAnswer) {
     this.questionText = questionText;
     this.answerOptions = answerOptions;
-    this.trueAnswer = trueAnswer;
+    this.correctAnswer = correctAnswer;
   }
   // Method to check if the answer provided is correct
   checkTheAnswer(answer) {
-    return answer === this.trueAnswer;
+    return answer === this.correctAnswer;
   }
 }
 

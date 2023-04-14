@@ -5,6 +5,7 @@ class Quiz {
   constructor(questions) {
     this.questions = questions;
     this.questionIndex = 0;
+    this.numberOfcorrectAnswer = 0;
   }
   // Method to get the current question
   getQuestions() {

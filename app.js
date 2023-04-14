@@ -9,9 +9,9 @@ ui.btn_start.addEventListener('click', function () {
   // Add the 'active' class to the quiz box to show it
   ui.quiz_box.classList.add('active');
   // Show the first question
-  showQuestion(quiz.getQuestions());
+  ui.showQuestion(quiz.getQuestions());
   // Show the current question number and total number of questions
-  showNumberOfQuestions(quiz.questionIndex + 1, quiz.questions.length);
+  ui.showNumberOfQuestions(quiz.questionIndex + 1, quiz.questions.length);
   // Hide the 'Next' button
   ui.btn_next.classList.remove('show');
 });
@@ -22,44 +22,18 @@ ui.btn_next.addEventListener('click', function () {
   if (quiz.questions.length != quiz.questionIndex + 1) {
     // Increment the question index and show the next question
     quiz.questionIndex += 1;
-    showQuestion(quiz.getQuestions());
+    ui.showQuestion(quiz.getQuestions());
     // Show the current question number and total number of questions
-    showNumberOfQuestions(quiz.questionIndex + 1, quiz.questions.length);
+    ui.showNumberOfQuestions(quiz.questionIndex + 1, quiz.questions.length);
     // Hide the 'Next' button
     ui.btn_next.classList.remove('show');
   } else {
     console.log('quiz finished');
+    ui.quiz_box.classList.remove('active');
+    ui.score_box.classList.add('active');
+    ui.showScore(quiz.questions.length, quiz.numberOfcorrectAnswer);
   }
 });
-
-// This function shows a question on the quiz page
-function showQuestion(question) {
-  // Create a span element to hold the question text
-  let questionTextElement = `<span>${question.questionText}</span>`;
-  // Create a string to hold all the answer options
-  let options = '';
-  // Loop through all the answer options and add them to the options string
-  for (let answer in question.answerOptions) {
-    options += `
-    
-            <div class="option">
-                <span><b>${answer}</b>: ${question.answerOptions[answer]}</span>
-            </div>
-            
-        `;
-  }
-
-  // Set the question text and answer options in the HTML
-  document.querySelector('.question_text').innerHTML = questionTextElement;
-  ui.option_list.innerHTML = options;
-
-  // Add an onclick event to each answer option
-  const allOptions = ui.option_list.querySelectorAll('.option');
-
-  for (let opt of allOptions) {
-    opt.setAttribute('onclick', 'optionSelected(this)');
-  }
-}
 
 // This function is called when an answer option is selected
 function optionSelected(option) {
@@ -70,6 +44,7 @@ function optionSelected(option) {
 
   // If the selected answer is correct, add the correct class and icon
   if (question.checkTheAnswer(answer)) {
+    quiz.numberOfcorrectAnswer += 1;
     option.classList.add('correct');
     option.insertAdjacentHTML('beforeend', ui.correctIcon);
     // If the selected answer is incorrect, add the incorrect class and icon
@@ -84,10 +59,4 @@ function optionSelected(option) {
   }
 
   ui.btn_next.classList.add('show');
-}
-
-// This function shows the current question number and total number of questions in the quiz
-function showNumberOfQuestions(questionOrder, totalNumberOfQuestions) {
-  let tag = `<span class="badge bg-warning">${questionOrder} / ${totalNumberOfQuestions}</span>`;
-  document.querySelector('.quiz_box .question_index').innerHTML = tag;
 }
