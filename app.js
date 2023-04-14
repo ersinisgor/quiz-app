@@ -69,6 +69,7 @@ const quiz = new Quiz(questions);
 document.querySelector('.btn_start').addEventListener('click', function () {
   document.querySelector('.quiz_box').classList.add('active');
   showQuestion(quiz.getQuestions());
+  showNumberOfQuestions(quiz.questionIndex + 1, quiz.questions.length);
   document.querySelector('.next_btn').classList.remove('show');
 });
 
@@ -76,6 +77,7 @@ document.querySelector('.next_btn').addEventListener('click', function () {
   if (quiz.questions.length != quiz.questionIndex + 1) {
     quiz.questionIndex += 1;
     showQuestion(quiz.getQuestions());
+    showNumberOfQuestions(quiz.questionIndex + 1, quiz.questions.length);
     document.querySelector('.next_btn').classList.remove('show');
   } else {
     console.log('quiz finished');
@@ -126,4 +128,9 @@ function optionSelected(option) {
   }
 
   document.querySelector('.next_btn').classList.add('show');
+}
+
+function showNumberOfQuestions(questionOrder, totalNumberOfQuestions) {
+  let tag = `<span class="badge bg-warning">${questionOrder} / ${totalNumberOfQuestions}</span>`;
+  document.querySelector('.quiz_box .question_index').innerHTML = tag;
 }
