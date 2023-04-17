@@ -1,5 +1,7 @@
 # Quiz App
 
+Live Demo 👉 https://quiz-app-er.netlify.app/
+
 This JavaScript code implements a simple quiz app where users are asked a series of questions and given a limited amount of time to answer each one. The quiz app is implemented using object-oriented programming principles and makes use of an UI object to handle interactions with the DOM.
 
 ## Overview
