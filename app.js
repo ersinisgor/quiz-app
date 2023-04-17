@@ -29,6 +29,7 @@ ui.btn_next.addEventListener('click', function () {
     clearInterval(counterLine);
     startTimer(10);
     startTimerLine();
+    ui.time_text.textContent = 'Remaining Time';
     ui.showQuestion(quiz.getQuestions());
     // Show the current question number and total number of questions
     ui.showNumberOfQuestions(quiz.questionIndex + 1, quiz.questions.length);
@@ -75,6 +76,14 @@ function optionSelected(option) {
   } else {
     option.classList.add('incorrect');
     option.insertAdjacentHTML('beforeend', ui.incorrectIcon);
+
+    // Find the index of the correct answer option and add the 'correct' class and icon
+    let options = Array.from(ui.option_list.children);
+    let correctAnswerIndex = options.findIndex(index =>
+      question.checkTheAnswer(index.querySelector('span b').textContent)
+    );
+    options[correctAnswerIndex].classList.add('correct');
+    options[correctAnswerIndex].insertAdjacentHTML('beforeend', ui.correctIcon);
   }
 
   // Disable all answer options and show the next button

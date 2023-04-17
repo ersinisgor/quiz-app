@@ -41,7 +41,7 @@ class UI {
     const allOptions = this.option_list.querySelectorAll('.option');
 
     for (let opt of allOptions) {
-      opt.setAttribute('onclick', 'optionSelected(this)');
+      opt.setAttribute('onclick', 'optionSelected(this)'); // this keyword equals the clicked option
     }
   }
 
